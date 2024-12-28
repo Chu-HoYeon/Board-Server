@@ -1,5 +1,7 @@
 package com.fastcampus.boardserver.service.impl;
 
+import static com.fastcampus.boardserver.utils.SHA256Util.encryptSHA256;
+
 import com.fastcampus.boardserver.dto.UserDTO;
 import com.fastcampus.boardserver.exception.DuplicateIdException;
 import com.fastcampus.boardserver.mapper.UserProfileMapper;
@@ -27,6 +29,8 @@ public class UserServiceImpl implements UserService {
 			throw new DuplicateIdException("중복된 아이디입니다.");
 		}
 		userDTO.setCreateTime(LocalDateTime.now());
+		userDTO.setPassword(encryptSHA256(userDTO.getPassword()));
+
 		int result = userProfileMapper.insertUserProfile(userDTO);
 	}
 
