@@ -8,4 +8,40 @@
 		VALUES (#{userId}, #{password}, #{nickName}, #{isAdmin}, #{isWithDraw}, #{createTime}, #{status}, #{updateTime});
 	</insert>
 
+	<select id="selectUserProfile" resultType="com.fastcampus.boardserver.dto.UserDTO">
+		SELECT id, userId, password, nickName, isAdmin, createTime, isWithDraw, status, updateTime
+		FROM board.user
+		WHERE userId = #{userId}
+	</select>
+
+	<update id="updateUserProfile" parameterType="com.fastcampus.boardserver.dto.UserDTO">
+		UPDATE board.user
+		SET nickName = #{nickNam}
+	</update>
+
+	<delete id="deleteUserProfile" parameterType="java.lang.String">
+		DELETE
+		FROM board.user
+		WHERE userId = #{userId}
+	</delete>
+
+	<select id="findByUserIdAndPassword" resultType="com.fastcampus.boardserver.dto.UserDTO">
+		SELECT id, userId, password, nickName, isAdmin, createTime, isWithDraw, status, updateTime
+		FROM board.user
+		WHERE userId = #{userId}
+		AND password = #{password}
+	</select>
+
+	<select id="idCheck" parameterType="java.lang.String" resultType="int">
+		SELECT COUNT(*)
+		FROM board.user
+		WHERE userId = #{userId}
+	</select>
+
+	<update id="updatePassword" parameterType="com.fastcampus.boardserver.dto.UserDTO">
+		UPDATE board.user
+		SET password = #{password}
+		WHERE userId = #{userId}
+	</update>
+
 </mapper>
