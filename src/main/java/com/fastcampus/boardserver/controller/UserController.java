@@ -102,7 +102,7 @@ public class UserController {
 
 	@DeleteMapping("delete")
 	public ResponseEntity<LoginResponse> deleteUser(@RequestBody UserDeleteId userDeleteId, HttpSession session) {
-		ResponseEntity<LoginResponse> responseEntity = null;
+		ResponseEntity<LoginResponse> responseEntity 		= null;
 		String id = SessionUtil.getLoginMemberId(session);
 
 		try {
