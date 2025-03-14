@@ -1,7 +1,5 @@
 package com.fastcampus.boardserver.dto;
 
-import java.time.LocalDateTime;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,18 +13,9 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostDTO {
-
+public class CommentDTO {
 	private int id;
-	private String name;
-	private boolean isAdmin;
+	private int postId;
 	private String contents;
-	private LocalDateTime createTime;
-	private int views;
-	private int categoryId;
-	private int userId;
-	private int fileId;
-	private LocalDateTime updateTime;
-	private List<TagDTO> tagDTOList;
-
+	private int subCommentId;
 }

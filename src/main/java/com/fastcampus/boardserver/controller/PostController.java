@@ -2,6 +2,7 @@ package com.fastcampus.boardserver.controller;
 
 import com.fastcampus.boardserver.aop.LoginCheck;
 import com.fastcampus.boardserver.aop.LoginCheck.UserType;
+import com.fastcampus.boardserver.dto.CommentDTO;
 import com.fastcampus.boardserver.dto.PostDTO;
 import com.fastcampus.boardserver.dto.UserDTO;
 import com.fastcampus.boardserver.dto.response.CommonResponse;
@@ -87,6 +88,16 @@ public class PostController {
 		postService.deletePosts(userDTO.getId(), postId);
 		CommonResponse<PostDeleteRequest> commonResponse = new CommonResponse<>(HttpStatus.OK, "SUCCESS", "deletePosts", postDeleteRequest);
 		return ResponseEntity.ok(commonResponse);
+	}
+
+	// -- comments --
+
+	@PostMapping("comments")
+	@ResponseStatus(HttpStatus.CREATED)
+	@LoginCheck(userType = UserType.USER)
+	public ResponseEntity<CommonResponse<CommentDTO>> registerPostComment(String accountId, @RequestBody CommentDTO commentDTO) {
+//		postService.registerComment()
+		return null;
 	}
 
 	// --- response 객체 ---
